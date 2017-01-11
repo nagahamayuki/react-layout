@@ -7,9 +7,11 @@ export default class Mains extends React.Component{
         style={{
           width: '100%',
           height: 'calc(100vh - 64px)',
-          overflow: 'auto'
+          overflow: 'auto',
+          background: '#EFEFEF'
         }}
       >
+      hello world
       </div>
     );
   }

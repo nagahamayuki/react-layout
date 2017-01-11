@@ -6,7 +6,10 @@ export default class Appbar extends React.Component{
     return(
       <AppBar
         title="Title"
-        iconClassNameRight="muidocs-icon-navigation-expand-more"
+        onLeftIconButtonTouchTap={this.props.openMenu}
+        style={{
+          zIndex: 3000
+        }}
       />
     );
   }
