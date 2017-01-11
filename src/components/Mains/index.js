@@ -16,10 +16,14 @@ export default class Mains extends React.Component{
         transitionDuration: '250ms'
       },
       boxLeft: {
-        flex: '2 0 0%'
+        flex: '2 0 0%',
+        height: 'calc(100vh - 64px)',
+        overflow: 'auto'
       },
       boxRight: {
-        flex: '0 2 33.33%'
+        flex: '0 2 33.33%',
+        height: 'calc(100vh - 64px)',
+        overflow: 'auto'
       }
     }
 
