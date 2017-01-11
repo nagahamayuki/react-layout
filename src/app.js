@@ -32,7 +32,7 @@ class Layouts extends React.Component{
     return(
       <div>
         <Appbar openMenu={this._drawerOpen} />
-        <Mains />
+        <Mains drawerState={String(this.state.drawerState)} />
         <Drawer open={this.state.drawerState} containerStyle={{
           height: 'calc(100vh - 64px)',
           marginTop: 64

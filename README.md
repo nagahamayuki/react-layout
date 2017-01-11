@@ -25,3 +25,8 @@ src
 ### small-menu-layout コミット  
 メニューだけのレイアウト  
 ![2017-01-11 18 50 53](https://cloud.githubusercontent.com/assets/22278305/21843592/edc8d17e-d82e-11e6-86ee-e9091ad4992e.png)
+
+### dowble-column コミット  
+メニューの中にコンテンツがあるレイアウト。2つでも3つでもできる。  
+CSSのFlexシステムを採用している
+![2017-01-11 22 47 15](https://cloud.githubusercontent.com/assets/22278305/21850857/f3845c02-d84f-11e6-8b95-fcee5c722ed7.png)
