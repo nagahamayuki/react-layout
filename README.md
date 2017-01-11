@@ -20,7 +20,7 @@ src
 
 ### layout-commit コミット  
 最も最小のレイアウト
-![2017-01-11 17 43 37](https://cloud.githubusercontent.com/assets/22278305/21841535/dc336b08-d825-11e6-9495-b98d6d90431c.png)  
+![2017-01-11 18 52 23](https://cloud.githubusercontent.com/assets/22278305/21843659/20eac508-d82f-11e6-92e4-237372462660.png)
 
 ### small-menu-layout コミット  
 メニューだけのレイアウト  
