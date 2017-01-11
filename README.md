@@ -6,15 +6,15 @@ SPAにてlayoutを使用します。
 ```
 src  
 ｜  
-｜ーapp.js  
+｜ーapp.js(全体のReactDOM)  
 ｜  
-｜ーcomponents  
+｜ーcomponents(ここではトップナビとその他)  
 　　｜  
-　　｜ーAppbar.js  
+　　｜ーAppbar.js(トップナビ)  
 　　｜  
-　　｜ーMains  
+　　｜ーMains(それ以下)  
 　　　　｜  
-　　　　｜ーindex.js  
+　　　　｜ーindex.js(２カラム)  
 
 ```
 
