@@ -36,6 +36,7 @@ const reducer = (state = {openState: true}, action) => {
   }
 }
 
+//store
 const store = createStore(reducer)
 
 class AllComponent extends React.Component{
