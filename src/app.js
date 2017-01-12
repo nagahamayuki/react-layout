@@ -5,14 +5,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
 
+//react-router
+import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
+
 //components
 import Appbar from './components/Appbar.js'
 import Mains from './components/Mains/index.js'
+import Content from './components/Mains/Content.js'
 
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 
-class Layouts extends React.Component{
+class App extends React.Component{
 
   constructor(){
     super();
@@ -32,14 +36,18 @@ class Layouts extends React.Component{
     return(
       <div>
         <Appbar openMenu={this._drawerOpen} />
-        <Mains drawerState={String(this.state.drawerState)} />
         <Drawer open={this.state.drawerState} containerStyle={{
           height: 'calc(100vh - 64px)',
           marginTop: 64
         }}>
-          <MenuItem>Menu Item</MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
+          <Link to="a"><MenuItem>Menu Item</MenuItem></Link>
+          <Link to="b"><MenuItem>Menu Item 2</MenuItem></Link>
         </Drawer>
+        <div>
+          {this.props.children && React.cloneElement(this.props.children, {
+            drawerState: String(this.state.drawerState)
+          })}
+        </div>
       </div>
     );
   }
@@ -47,7 +55,12 @@ class Layouts extends React.Component{
 
 ReactDOM.render(
   <MuiThemeProvider>
-    <Layouts />
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Mains} />
+        <Route path="a" component={Content} />
+      </Route>
+    </Router>
   </MuiThemeProvider>,
   document.getElementById("app")
 )
