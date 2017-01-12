@@ -36,7 +36,7 @@ export default class Mains extends React.Component{
           background: '#EFEFEF'
         }}
       >
-        <div style={this.props.drawerState === 'false' ? styles.parentTrue : styles.parentFalse} >
+        <div style={this.props.shownMenu === 'false' ? styles.parentTrue : styles.parentFalse} >
           <div style={styles.boxLeft}>
             hello
           </div>

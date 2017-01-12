@@ -6,7 +6,7 @@ export default class Appbar extends React.Component{
     return(
       <AppBar
         title="Title"
-        onLeftIconButtonTouchTap={this.props.openMenu}
+        onLeftIconButtonTouchTap={this.props.menuHandler}
         style={{
           zIndex: 3000
         }}

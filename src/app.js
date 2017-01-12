@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -16,27 +18,33 @@ import Content from './components/Mains/Content.js'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 
-class App extends React.Component{
+/* redux */
+//action
+const openMenu = {
+  type: 'OPEN_MENU'
+}
 
-  constructor(){
-    super();
-    this.state = {
-      drawerState: true
-    }
-    this._drawerOpen = this._drawerOpen.bind(this);
+//reducer
+const reducer = (state = {openState: true}, action) => {
+  switch (action.type) {
+    case 'OPEN_MENU':
+      return{
+        openState: !state.openState
+      }
+    default:
+      return state;
   }
+}
 
-  _drawerOpen(){
-    this.setState({
-      drawerState: !this.state.drawerState
-    })
-  }
+const store = createStore(reducer)
 
+class AllComponent extends React.Component{
   render(){
+    const { openState, menuHandler } = this.props;
     return(
       <div>
-        <Appbar openMenu={this._drawerOpen} />
-        <Drawer open={this.state.drawerState} containerStyle={{
+        <Appbar menuHandler={this.props.menuHandler} />
+        <Drawer open={this.props.openState} containerStyle={{
           height: 'calc(100vh - 64px)',
           marginTop: 64
         }}>
@@ -45,7 +53,7 @@ class App extends React.Component{
         </Drawer>
         <div>
           {this.props.children && React.cloneElement(this.props.children, {
-            drawerState: String(this.state.drawerState)
+            shownMenu: String(this.props.openState)
           })}
         </div>
       </div>
@@ -53,14 +61,34 @@ class App extends React.Component{
   }
 }
 
+//react-redux
+const mapStateToProps = (state) => {
+  return{
+    openState: state.openState
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    menuHandler:() => {dispatch(openMenu)}
+  }
+}
+
+const App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AllComponent)
+
 ReactDOM.render(
   <MuiThemeProvider>
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Mains} />
-        <Route path="a" component={Content} />
-      </Route>
-    </Router>
+    <Provider store={store}>
+      <Router history={browserHistory}>
+        <Route path="/" component={App}>
+          <IndexRoute component={Mains} />
+          <Route path="a" component={Content} />
+        </Route>
+      </Router>
+    </Provider>
   </MuiThemeProvider>,
   document.getElementById("app")
 )
