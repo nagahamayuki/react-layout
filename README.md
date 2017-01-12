@@ -31,34 +31,6 @@ src
 CSSのFlexシステムを採用している
 ![2017-01-11 22 47 15](https://cloud.githubusercontent.com/assets/22278305/21850857/f3845c02-d84f-11e6-8b95-fcee5c722ed7.png)
 
-<<<<<<< HEAD
-### redux-architecture コミット  
-このコミットからfluxアーキテクチャのreduxを採用している。  
-まずはメニューの開閉をreduxにて実装。
-
-```
-/* redux */
-//action
-const openMenu = {
-  type: 'OPEN_MENU'
-}
-
-//reducer
-const reducer = (state = {openState: true}, action) => {
-  switch (action.type) {
-    case 'OPEN_MENU':
-      return{
-        openState: !state.openState
-      }
-    default:
-      return state;
-  }
-}
-
-//store
-const store = createStore(reducer)
-```
-=======
 ### react-router コミット  
 routerを設置。
 
@@ -89,4 +61,30 @@ routerを設置。
 ```
 
 このようにして値を子要素のpropsに渡す。
->>>>>>> bad8a7be358ec1f6db1bd8c2a69d699078445fe3
+
+### redux-architecture コミット  
+このコミットからfluxアーキテクチャのreduxを採用している。  
+まずはメニューの開閉をreduxにて実装。
+
+```
+/* redux */
+//action
+const openMenu = {
+  type: 'OPEN_MENU'
+}
+
+//reducer
+const reducer = (state = {openState: true}, action) => {
+  switch (action.type) {
+    case 'OPEN_MENU':
+      return{
+        openState: !state.openState
+      }
+    default:
+      return state;
+  }
+}
+
+//store
+const store = createStore(reducer)
+```
